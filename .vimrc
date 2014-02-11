@@ -6,7 +6,7 @@ set nocompatible
 
 
 " Manage plugins automagically with T Pope's Pathogen:
-execute pathogen#infect('contagions/{}')
+execute pathogen#infect('vials/{}')
 " Extra plugin folders can be appended with comma separation. Yes I
 " gave it a dorky name.
 
