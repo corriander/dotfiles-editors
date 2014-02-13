@@ -35,4 +35,5 @@ endif
 
 colorscheme jellybeans
 
+" Saves on buffer switching
 set autowrite
