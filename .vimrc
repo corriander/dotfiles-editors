@@ -35,5 +35,12 @@ endif
 
 colorscheme jellybeans
 
+" Configure vim-pandoc
+" use_hard_wraps results in setlocal formatoption=tn in vim-pandoc
+let g:pandoc_use_hard_wraps = 1
+let g:pandoc_auto_format = 1
+" Default bibliography
+"let g:pandoc_bibfiles = ['path/to.bib']
+
 " Saves on buffer switching
 set autowrite
