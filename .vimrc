@@ -33,6 +33,7 @@ else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
+let g:jellybeans_term_trans = 1
 colorscheme jellybeans
 
 " Configure vim-pandoc
