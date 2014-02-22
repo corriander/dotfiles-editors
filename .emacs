@@ -24,4 +24,5 @@
   (unless (package-installed-p pkg)
 	(package-install pkg)))
 
-
+(require 'evil)
+(evil-mode 1)
