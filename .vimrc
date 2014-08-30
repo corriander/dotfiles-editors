@@ -45,3 +45,6 @@ let g:pandoc_auto_format = 1
 
 " Saves on buffer switching
 set autowrite
+
+" Enable bash aliases
+let $BASH_ENV = "~/.bash_aliases"
