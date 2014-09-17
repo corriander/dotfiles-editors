@@ -33,7 +33,11 @@ else
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
-let g:jellybeans_term_trans = 1
+" Visualisation
+" -------------
+nmap <leader>l :set list!<CR>			" Shortcut to set list
+set listchars=tab:»·,trail:·			" Whitespace (set list, \l)
+let g:jellybeans_term_trans = 1			" Transparent background
 colorscheme jellybeans
 
 " Configure vim-pandoc
