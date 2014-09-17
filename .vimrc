@@ -43,8 +43,13 @@ let g:pandoc_auto_format = 1
 " Default bibliography
 "let g:pandoc_bibfiles = ['path/to.bib']
 
-" Saves on buffer switching
-set autowrite
+" Configure sessions/buffers/windows
+" ----------------------------------
+set autowrite			" Saves on buffer switching
+map <c-j> <c-w>j		" Remap standard window nav to Ctrl+<movement>
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
 
 " Enable bash aliases
 let $BASH_ENV = "~/.bash_aliases"
