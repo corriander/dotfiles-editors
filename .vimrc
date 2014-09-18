@@ -47,6 +47,10 @@ let g:pandoc_auto_format = 1
 " Default bibliography
 "let g:pandoc_bibfiles = ['path/to.bib']
 
+" Configure SimpylFold
+" let g:SimpylFold_docstring_preview		" This is a little verbose
+let g:SimpylFold_fold_docstring = 0			" Don't fold docstrings
+
 " Configure sessions/buffers/windows
 " ----------------------------------
 set autowrite			" Saves on buffer switching
