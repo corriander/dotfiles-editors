@@ -27,7 +27,7 @@ imap <S-Tab> <Esc><<i
 " Set a coloured column to indicate desired text width.
 " Source http://stackoverflow.com/a/3765575
 if exists('+colorcolumn')
-	set colorcolumn=71
+	set colorcolumn=+1					" textwidth+1
 else
 	" If no colorcolumn support (--version < 7.3) 
 	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
