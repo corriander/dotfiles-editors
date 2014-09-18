@@ -1,0 +1,71 @@
+#!/bin/bash
+# Manage vim 'bundles' in the `~/.vim/vials` directory
+
+VRT=$HOME/.vim					# VIMRUNTIME (~/.vim)
+
+self_path=${BASH_SOURCE[0]}
+self=$(basename $0)
+cmd=$1
+bundle=$2
+
+usage () {
+	printf "Usage: \n\t${self} [list|list-enabled|enable|disable] [BUNDLE]\n"
+	exit 1
+}
+
+not_recognised () {
+	echo "${self}: '${bundle}' not recognised"
+	usage
+}
+
+recurse () {
+	action=$1
+	if [ x"${action}" != x"enable" ] && [ x"${action}" != x"disable" ] 
+	then
+		echo "${self}: internal error"			# Guard for extending
+		exit 1
+	fi
+	for bundle in $(ls "${VRT}/vials-available") 
+	do
+		bash ${self_path} ${action} ${bundle} 
+	done
+}
+
+cd ${VRT}
+
+case ${cmd} in
+	--help ) usage ;;
+	list ) ls vials-available | sort ;;
+	list-enabled ) ls vials-enabled | sort ;;
+
+	enable )
+		[ -z "${bundle}" ] && usage
+		[ x"${bundle}" == x"all" ] && recurse ${cmd} && exit 0
+
+		if [ -d "vials-available/${bundle}" ]
+		then
+		   ln -sf "../vials-available/${bundle}" "vials-enabled/${bundle}"
+		else
+			not_recognised
+		fi 
+		;;
+
+	disable )
+		[ -z "${bundle}" ] && usage
+		[ x"${bundle}" == x"all" ] && recurse ${cmd} && exit 0
+
+		if [ -d "vials-available/${bundle}" ]
+		then
+			rm "vials-enabled/${bundle}" > /dev/null 2>&1
+		else
+			not_recognised
+		fi
+		;;
+
+	* ) 
+		echo "${self}: unrecognised command"
+		usage
+		;;
+esac
+
+exit 0
