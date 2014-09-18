@@ -26,3 +26,10 @@ config, and relies heavily on `gtk-sourceview3.0` which has its own
 place. I have symlinked a lot of this content, there's no point
 repeating plugins so I need to tidy this up before I migrate these
 settings in.
+
+TODO
+----
+
+  - Consider aliases for fugitive commands. start using it, it's good.
+  - See whether folds can be rendered differently (i.e. not to trail
+	off the screen/overlay the colorcolumn)
