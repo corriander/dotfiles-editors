@@ -1,0 +1,26 @@
+README: $VIMRUNTIME directory
+=============================
+
+This is where the majority of the Vim configuration lives (only the
+.vimrc is outside and that can, I think, be moved in here too if
+necessary).
+
+Directories
+-----------
+
+The purpose of each of these directories (should be):
+
+  - `after/` : mirrored structure that runs *after* everything else.
+    This is the place for tweaking bits of configuration without
+	nuking stuff earlier in the load sequence.
+  - `autoload/` : not really important to me
+  - `colors/` : syntax highlighting
+  - `ftdetect/` : filetype-specific instructions for picking up
+    non-standard file extensions etc.
+  - `ftplugin/` : filetype-specific configuration
+  - `syntax/` : syntax definition
+  - `vials*/` : directory of plugins/addons managed by T. Pope's
+    pathogen (http://github.com/tpope/vim-pathogen). There is a helper
+	script for this called `vials` allowing selective
+	enabling/disabling (invaluable for debugging/testing). Enabled
+	plugins are symlinked in the `vials-enabled` directory.
