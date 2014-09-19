@@ -57,3 +57,19 @@ map <c-h> <c-w>h
 
 " Enable bash aliases
 let $BASH_ENV = "~/.bash_aliases"
+
+" Auto-fix trailing whitespace in certain filetypes on buffer write
+" See: http://unix.stackexchange.com/a/75438
+function! <SID>rStrip()
+	let l = line(".")					" Save cursor x,y
+	let c = col(".")					" 
+	%s/\s\+$//e							" Remove trailing whitespace
+	call cursor(l, c)					" Restore cursor
+endfun
+" Run the rStrip() function every time a buffer is written.
+autocmd BufWritePre * if &ft =~ 'python' | call <SID>rStrip() | endif
+" Note, I've chosen to do this on every buffer write because my config
+" is likely to introduce whitespace during editing (e.g autoindent in
+" python). If this were to be fixed, this could be relegated to an
+" explicit command for one of occasions, which I'd actually prefer.
+
