@@ -18,6 +18,10 @@ filetype plugin indent on
 set textwidth=70
 set tabstop=4
 set shiftwidth=4
+
+" Adjust default formatting options.
+set formatoptions+=j				" Comment leader removal on join
+
 " Enable Shift-Tab:
 nmap <S-Tab> <<
 imap <S-Tab> <Esc><<i
