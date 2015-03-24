@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.text	set filetype=markdown
+au BufRead,BufNewFile *.text,*.md	set filetype=markdown

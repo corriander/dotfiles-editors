@@ -28,6 +28,12 @@ imap <S-Tab> <Esc><<i
 " Note: I don't have expandtab enabled, to convert a file to
 " whitespace, :%retab 
 
+" Make filename tab completion a bit like bash + cycle. You can append
+" the 'full' option to this, but I find it unintuitive being used to
+" the simpler readline autocompletion (which the following emulates).
+set wildmode=longest,list
+set wildmenu
+
 " Set a coloured column to indicate desired text width.
 " Source http://stackoverflow.com/a/3765575
 if exists('+colorcolumn')
