@@ -59,12 +59,13 @@ side effects:
 	look.
   - There is no support in vim for transparent colouring (AFAIK).
 
-###### Folds
+###### Folds (general)
 
 Aside from the concerns about transparency, folds look a little ugly
 by default with the presence of a colour column. They overlay it
 (removing the colbg from the intersection point) and they trail off
 the screen. I suspect this can be fixed, but... (TODO)
+
 
 ###### Whitespace
 
@@ -166,6 +167,11 @@ Both of these things can be fixed, but I'd rather it *just worked*. It
 might be pertinent to investigate other alternatives again. I am aware
 that it's easier said than done, however.
 
+An additional issue is the increased use of the DDT package in 
+python, it would be very nice if large data decorators could be 
+folded away (a short term workaround would be to put the data in the
+supported json files).
+
 
 TODO
 ----
@@ -174,6 +180,7 @@ TODO
   - See whether folds can be rendered differently (i.e. not to trail
 	off the screen/overlay the colorcolumn)
   - Re-test python indent folding.
+  - Support folding of Python DDT data decorators.
   - Investigate yet more python folding solutions.
   - Do more evaluation of whitespace management options and settle on
 	something.
