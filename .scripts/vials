@@ -56,12 +56,18 @@ case ${cmd} in
 
 		if [ -d "vials-available/${bundle}" ]
 		then
-			rm "vials-enabled/${bundle}" > /dev/null 2>&1
+			rm "vials-enabled/${bundle}" > /dev/null 2>&1 || echo "Not enabled."
 		else
 			not_recognised
 		fi
 		;;
 
+	install )
+		# TODO: consider changing the bundle variable name with this new option
+		giturl=${bundle}
+		git clone ${giturl} vials-available/$(basename ${giturl%.*})
+		recurse enable
+		;;
 	* ) 
 		echo "${self}: unrecognised command"
 		usage
