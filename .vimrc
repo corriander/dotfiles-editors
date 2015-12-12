@@ -4,13 +4,14 @@
 set nocompatible
 " Source - http://stackoverflow.com/a/5845583/2921610
 
-
 " Manage plugins automagically with T Pope's Pathogen:
 execute pathogen#infect('vials-enabled/{}')
 execute pathogen#helptags()
 " Extra plugin folders can be appended with comma separation. Yes I
 " gave it a dorky name.
-
+" I wrote a script (~/.scripts/vials) to selectively apply plugins.
+" I may consider shifting over to Vundle as it removes the need for my
+" custom approach and means I don't need to git submodule...
 
 syntax on
 filetype plugin indent on
