@@ -1,8 +1,56 @@
-" NOTE: To source me, :so %, or :so ~/.vimrc outside.
-
+" NOTE: To source me, 
+"
+"   - :so %, or 
+"   - :so $MYVIMRC
+"   - :so $XDG_CONFIG_HOME/vim/vimrc
+"
 " Default anyway, but probably a good idea to explicitly...
 set nocompatible
 " Source - http://stackoverflow.com/a/5845583/2921610
+
+" Environment
+" ===========
+"
+" XDG Compatibility
+" -----------------
+"
+" ### References
+"
+"   - http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html#variables
+"   - http://tlvince.com/vim-respect-xdg 
+"   - https://gist.github.com/kaleb/3885679
+"   - http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
+"
+" ### Configure directories
+"
+
+if empty($XDG_CACHE_HOME)
+  let $XDG_CACHE_HOME = '~/.cache'
+endif
+if empty($XDG_CONFIG_HOME)
+  let $XDG_CONFIG_HOME = '~/.config'
+endif
+
+if !isdirectory($XDG_CACHE_HOME . "/vim/swap")
+  call mkdir($XDG_CACHE_HOME . "/vim/swap", "p")
+endif
+set directory=$XDG_CACHE_HOME/vim/swap//,/var/tmp//,/tmp//
+
+" No setup for backup files here, they aren't used.
+
+" See :help persistent-undo
+if !isdirectory($XDG_CACHE_HOME . "/vim/undo")
+  call mkdir($XDG_CACHE_HOME . "/vim/undo", "p")
+endif
+set undodir=$XDG_CACHE_HOME/vim/undo//,/var/tmp//,/tmp//
+set undofile
+
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+
+set runtimepath-=~/.vim
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath-=~/.vim/after
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
 
 " Manage plugins automagically with T Pope's Pathogen:
 execute pathogen#infect('vials-enabled/{}')
@@ -55,10 +103,14 @@ set listchars=tab:»·,trail:·			" Whitespace (set list, \l)
 let g:jellybeans_term_trans = 1			" Transparent background
 colorscheme jellybeans
 
+" Configure LaTeX
+let g:tex_flavor = 'latex'
+
 " Configure vim-pandoc
 " use_hard_wraps results in setlocal formatoption=tn in vim-pandoc
 let g:pandoc_use_hard_wraps = 1
 let g:pandoc_auto_format = 1
+let g:pandoc#syntax#conceal#use = 0
 " Default bibliography
 "let g:pandoc_bibfiles = ['path/to.bib']
 
@@ -68,6 +120,16 @@ let g:pandoc_auto_format = 1
 " let g:SimpylFold_fold_docstring = 0		" Folding is annoying for
 											" short docstrings, but a
 											" good idea for long ones
+
+" Configure ultisnips
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Setup triggers.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 
 " Configure sessions/buffers/windows
 " ----------------------------------
@@ -94,4 +156,3 @@ autocmd BufWritePre * if &ft =~ 'python' | call <SID>rStrip() | endif
 " is likely to introduce whitespace during editing (e.g autoindent in
 " python). If this were to be fixed, this could be relegated to an
 " explicit command for one of occasions, which I'd actually prefer.
-
