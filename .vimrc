@@ -46,7 +46,11 @@ endif
 
 " Visualisation
 " -------------
-nmap <leader>l :set list!<CR>			" Shortcut to set list
+
+" Commands
+nmap <leader>l :set list!<CR>				" Shortcut to set list
+nmap <leader>s :syntax sync fromstart<CR>	" Refresh syntax highlighting
+
 set listchars=tab:»·,trail:·			" Whitespace (set list, \l)
 let g:jellybeans_term_trans = 1			" Transparent background
 colorscheme jellybeans
