@@ -63,8 +63,11 @@ let g:pandoc_auto_format = 1
 "let g:pandoc_bibfiles = ['path/to.bib']
 
 " Configure SimpylFold
-" let g:SimpylFold_docstring_preview		" This is a little verbose
-let g:SimpylFold_fold_docstring = 0			" Don't fold docstrings
+" let g:SimpylFold_docstring_preview = 0	" This is a little verbose
+" 											" for limited texwidth
+" let g:SimpylFold_fold_docstring = 0		" Folding is annoying for
+											" short docstrings, but a
+											" good idea for long ones
 
 " Configure sessions/buffers/windows
 " ----------------------------------
