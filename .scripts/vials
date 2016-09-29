@@ -1,7 +1,7 @@
 #!/bin/bash
 # Manage vim 'bundles' in the `~/.vim/vials` directory
 
-VRT=$HOME/.vim					# VIMRUNTIME (~/.vim)
+VRT=$HOME/.config/vim		# VIMRUNTIME (e.g. ~/.vim)
 
 self_path=${BASH_SOURCE[0]}
 self=$(basename $0)
