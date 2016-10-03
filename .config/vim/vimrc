@@ -6,6 +6,10 @@
 "
 " Default anyway, but probably a good idea to explicitly...
 set nocompatible
+
+" Character encoding (default latin1 on win32)
+set encoding=utf-8
+
 " Source - http://stackoverflow.com/a/5845583/2921610
 
 " Environment
@@ -194,9 +198,6 @@ if has('win32')
 	set directory+=c:\temp
 	
 	let g:jellybeans_term_trans = 0
-
-	" Character encoding (default latin1)
-	set encoding=utf-8
 
 	" Let backspace work over indents, but keep it vi-like.
 	set backspace=indent ",eol,start
