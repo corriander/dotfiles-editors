@@ -134,10 +134,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Configure sessions/buffers/windows
 " ----------------------------------
 set autowrite			" Saves on buffer switching
-map <c-j> <c-w>j		" Remap standard window nav to Ctrl+<movement>
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
 
 " Enable bash aliases
 let $BASH_ENV = "~/.bash_aliases"
@@ -156,3 +152,46 @@ autocmd BufWritePre * if &ft =~ 'python' | call <SID>rStrip() | endif
 " is likely to introduce whitespace during editing (e.g autoindent in
 " python). If this were to be fixed, this could be relegated to an
 " explicit command for one of occasions, which I'd actually prefer.
+
+" Statusline : 
+"   - http://stackoverflow.com/q/5375240/2921610
+"   - http://got-ravings.blogspot.co.uk/2008/08/vim-pr0n-making-statuslines-that-own.html
+set laststatus=2
+set statusline=%f       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+
+" Custom commands
+" ---------------
+"
+" ### Delete buffer
+nmap <leader>d :bp\|bd #<CR>
+" ### Filter v1
+command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+" ### Filter v2
+nmap <leader>f :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR> 
+" ### Remap window navigation to CTRL+<arrow keys>
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" Windows-specific configuration
+" ------------------------------
+"
+if has('win32')
+	set directory-=/var/tmp//
+	set directory-=/tmp//
+	set directory+=c:\tmp
+	set directory+=c:\temp
+	
+	let g:jellybeans_term_trans = 0
+endif
