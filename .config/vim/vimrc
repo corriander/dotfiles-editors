@@ -194,4 +194,14 @@ if has('win32')
 	set directory+=c:\temp
 	
 	let g:jellybeans_term_trans = 0
+
+	" Character encoding (default latin1)
+	set encoding=utf-8
+
+	" Let backspace work over indents, but keep it vi-like.
+	set backspace=indent ",eol,start
+
+	" Don't start in System and use profile TMP directory.
+	cd ~
+	let $TMP="c:\users\acorrie\tmp"
 endif
