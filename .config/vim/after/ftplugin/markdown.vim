@@ -14,3 +14,12 @@ setlocal formatlistpat=^\\s*(?[\\d#]\\+[\\.)]\\s\\+\\\|^\\s*[-*+:~]\\s\\+\\\|^\\
 " NOTE: Yeah, this is breaking actual for LaTeX documents anyway. Need
 " a cleverer solution.
 " setlocal makeprg=/home/alex/.cabal/bin/pandoc\ %\ >/tmp/%<.html
+
+function MarkdownLevel() 
+	let h = matchstr(getline(v:lnum), '^#\+') 
+	if empty(h) 
+		return "=" 
+	else 
+		return ">" . len(h) 
+	endif 
+endfunction
