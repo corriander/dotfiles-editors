@@ -122,6 +122,7 @@ let g:pandoc#syntax#conceal#use = 0
 											" good idea for long ones
 
 " Configure ultisnips
+let g:UltiSnipsSnippetDirectories = ['~/.config/vim/UltiSnips', 'UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -129,7 +130,7 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
+nmap <leader><tab> :call UltiSnips#ListSnippets()<CR>
 
 " Configure sessions/buffers/windows
 " ----------------------------------

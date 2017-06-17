@@ -1,0 +1,45 @@
+snippet unittest "unittest initial template" b
+import unittest
+
+
+testcase$1
+
+
+if __name__ == '__main__':
+	unittest.main()
+endsnippet
+
+
+snippet testcase "pyunit testcase" b
+class Test${1:Class}(${2:unittest.TestCase}):
+	"""${3:Test case docstring.}"""
+
+	def setUp(self):
+		${4:pass}
+
+	def test_${6:name}(self):
+		${7:pass}
+endsnippet
+
+
+snippet todo "TODO Comment." b
+# ${1:TODO}: `echo $USER` $2 [`!v strftime("%c")`]
+endsnippet
+
+
+snippet aii "Assert is instance of" b
+self.assertIsInstance(${1:obj}, ${2:cls})
+endsnippet
+
+
+snippet aae "Assert almost equal" b
+self.assertAlmostEqual($1, $2${3:, places=}$4)
+endsnippet
+
+
+snippet trypdb "PDB in Try/Except block" b
+try:
+	${1:pass}
+except ${2:Exception} as ${3:e}:
+	import pdb; pdb.set_trace()
+endsnippet
