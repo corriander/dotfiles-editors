@@ -1,0 +1,9 @@
+[submodule ".config/vim/vials-available/ultisnips"]
+	path = .config/vim/vials-available/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule ".config/vim/vials-available/vim-fugitive"]
+	path = .config/vim/vials-available/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule ".config/vim/vials-available/vim-surround"]
+	path = .config/vim/vials-available/vim-surround
+	url = git@github.com:tpope/vim-surround.git
