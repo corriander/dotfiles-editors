@@ -157,3 +157,15 @@ autocmd BufWritePre * if &ft =~ 'python' | call <SID>rStrip() | endif
 " is likely to introduce whitespace during editing (e.g autoindent in
 " python). If this were to be fixed, this could be relegated to an
 " explicit command for one of occasions, which I'd actually prefer.
+
+" Utility functions / shortcuts
+" -----------------------------
+" Shotcut to delete a buffer without closing the window.
+nmap <leader>d :bp\|bd #<CR>
+
+" Dump matched lines into a new buffer.
+command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+
+" Dump matched lines into a new buffer (preview first).
+nmap <leader>f :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
+
