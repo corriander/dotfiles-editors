@@ -10,3 +10,6 @@
 [submodule ".config/vim/vials-available/SimpylFold"]
 	path = .config/vim/vials-available/SimpylFold
 	url = git@github.com:tmhedberg/SimpylFold.git
+[submodule ".config/vim/vials-available/colorscheme-vim-fahrenheit"]
+	path = .config/vim/vials-available/colorscheme-vim-fahrenheit
+	url = https://github.com/fcpg/vim-fahrenheit.git
