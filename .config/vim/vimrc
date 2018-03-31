@@ -102,7 +102,7 @@ nmap <leader>s :syntax sync fromstart<CR>	" Refresh syntax highlighting
 set listchars=tab:»·,trail:·			" Whitespace (set list, \l)
 
 let s:hostname = hostname()
-if s:hostname =~ '^p'
+if s:hostname =~ '^\(p\|M\)'
 	let g:jellybeans_term_trans = 1			" Transparent background
 	colorscheme jellybeans
 endif
