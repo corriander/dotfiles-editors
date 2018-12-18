@@ -101,10 +101,10 @@ nmap <leader>s :syntax sync fromstart<CR>	" Refresh syntax highlighting
 
 set listchars=tab:»·,trail:·			" Whitespace (set list, \l)
 
+colorscheme jellybeans                  " Default colorscheme
 let s:hostname = hostname()
 if s:hostname =~ '^\(p\|M\)'
 	let g:jellybeans_term_trans = 1			" Transparent background
-	colorscheme jellybeans
 endif
 if s:hostname =~ '^D'
 	colorscheme fahrenheit

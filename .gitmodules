@@ -13,3 +13,6 @@
 [submodule ".config/vim/vials-available/colorscheme-vim-fahrenheit"]
 	path = .config/vim/vials-available/colorscheme-vim-fahrenheit
 	url = https://github.com/fcpg/vim-fahrenheit.git
+[submodule ".config/vim/vials-available/jellybeans.vim"]
+	path = .config/vim/vials-available/jellybeans.vim
+	url = https://github.com/corriander/jellybeans.vim
