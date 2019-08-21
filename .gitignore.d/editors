@@ -1,27 +1,12 @@
-*
-!.vim
-!.vim/autoload
-!.vim/autoload/pathogen.vim
-!.vim/colors
-!.vim/colors/256-grayvim.vim
-!.vim/colors/bw.vim
-!.vim/colors/desert256.vim
-!.vim/colors/desert.vim
-!.vim/colors/inkpot.vim
-!.vim/colors/jellybeans.vim
-!.vim/colors/mustang.vim
-!.vim/colors/solarized.vim
-!.vim/colors/sqf.vim
-!.vim/colors/twilight.vim
-!.vim/colors/zenburn.vim
-!.vim/vials
-!.vim/vials/README
-!.vim/vials/vim-surround
-!.vim/filetype.vim
-!.vim/ftplugin
-!.vim/ftplugin/markdown.vim
-!.vim/plugin
-!.vim/plugin/VimColorTest.vim
-!.vimrc
-!.vim/syntax
-!.vim/syntax/n3.vim
+# https://stackoverflow.com/a/29932318
+# Ignore everything
+/*
+
+# Include .config, but exclude everything inside for now
+!.config/
+.config/*
+
+# Include vim config dir, exclude specific subdirs and files
+!.config/vim/
+.config/vim/.netrwhist
+.config/vim/vials*/
