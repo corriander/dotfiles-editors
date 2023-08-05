@@ -17,6 +17,9 @@ return require('packer').startup(function(use)
 	'christoomey/vim-tmux-navigator', branch = 'master'
   }
 
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use('nvim-treesitter/playground')
+
   use('rebelot/kanagawa.nvim')
   use ({
 	  'rose-pine/neovim',
