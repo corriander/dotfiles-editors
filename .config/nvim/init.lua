@@ -1,2 +1,2 @@
-require("corriander")
+require("corriander.remap")
 print("hello")
