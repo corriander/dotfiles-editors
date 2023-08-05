@@ -2,6 +2,10 @@
 # Ignore everything
 /*
 
+!.gitignore.d/
+.gitignore.d/*
+!.gitignore.d/editors
+
 # Include .config, but exclude everything inside for now
 !.config/
 .config/*
@@ -10,3 +14,6 @@
 !.config/vim/
 .config/vim/.netrwhist
 .config/vim/vials*/
+
+# Include neovim config dir
+!.config/nvim/
