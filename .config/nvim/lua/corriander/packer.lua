@@ -19,6 +19,10 @@ return require('packer').startup(function(use)
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
+  use ({
+	  'nvim-telescope/telescope-fzf-native.nvim',
+	  run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  })
 
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
@@ -33,5 +37,21 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
+
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  branch = 'v2.x',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},             -- Required
+		  {'williamboman/mason.nvim'},           -- Optional
+		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},     -- Required
+		  {'hrsh7th/cmp-nvim-lsp'}, -- Required
+		  {'L3MON4D3/LuaSnip'},     -- Required
+	  }
+  }
 
 end)
