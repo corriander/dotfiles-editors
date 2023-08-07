@@ -1,2 +1,2 @@
 require("corriander.remap")
-print("hello")
+require("corriander.set")
