@@ -13,9 +13,12 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use {
-	'christoomey/vim-tmux-navigator', branch = 'master'
-  }
+  use({
+      'numToStr/Navigator.nvim',
+      config = function()
+          require('Navigator').setup()
+      end
+  })
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
