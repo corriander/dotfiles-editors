@@ -26,7 +26,6 @@ vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 --
 -- Additional Esc shortcut (note Alt/Cmd-[ is valid)
-vim.keymap.set("i", "<leader>kj", "<Esc>")
 vim.keymap.set("i", "<Alt-k>", "<Esc>")
 
 -- Additional Write shortcut
