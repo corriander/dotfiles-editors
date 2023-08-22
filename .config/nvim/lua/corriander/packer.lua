@@ -58,4 +58,6 @@ return require('packer').startup(function(use)
 	  }
   }
 
+  use 'romainl/vim-qf'
+
 end)
