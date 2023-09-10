@@ -58,6 +58,9 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  use 'romainl/vim-qf'
+  use('psf/black')
+
+  use('romainl/vim-qf')
+
 
 end)
