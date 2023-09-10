@@ -28,18 +28,23 @@ return require('packer').startup(function(use)
   })
 
   use('theprimeagen/harpoon')
+
+  -- Change management (git, undo tree)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use('airblade/vim-gitgutter')
+
   use('tpope/vim-surround')
 
+  -- Colours
   use('ellisonleao/gruvbox.nvim')
   use('rebelot/kanagawa.nvim')
   use ({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
+	  --config = function()
+	  --    vim.cmd('colorscheme rose-pine')
+	  --end
   })
 
   use {
