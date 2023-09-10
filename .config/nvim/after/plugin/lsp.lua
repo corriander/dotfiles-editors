@@ -23,13 +23,14 @@ cmp.setup({
 })
 
 
-
-lsp.on_attach(function(client, bufnr)
+local on_attach = function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp.default_keymaps({buffer = bufnr})
   -- TODO: Consider custom bindings. See ThePrimeagen and/or :help
-end)
+end
+
+lsp.on_attach(on_attach)
 
 -- (Optional) Configure lua language server for neovim
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
@@ -46,9 +47,11 @@ lspconfig.pylsp.setup({
     }
 })
 
+-- ----------------------------------------------------------------------------
+-- Selectively disable hints from pyright
+-- ----------------------------------------------------------------------------
 -- This all works, tested against pyright for a specific "not accessed" hint and it suppresses it
 -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
-
 function filter(arr, func)
 	-- Filter in place
 	-- https://stackoverflow.com/questions/49709998/how-to-filter-a-lua-array-inplace
@@ -65,11 +68,6 @@ end
 
 
 function filter_diagnostics(diagnostic)
-	-- Only filter out Pyright stuff for now
-	if diagnostic.source ~= "Pyright" then
-		return true
-	end
-
 	-- Allow kwargs to be unused, sometimes you want many functions to take the
 	-- same arguments but you don't use all the arguments in all the functions,
 	-- so kwargs is used to suck up all the extras
@@ -86,37 +84,40 @@ function filter_diagnostics(diagnostic)
 		return false
 	end
 
-    -- Suppress not accessed hint (provided by ruff-lsp)  -- the error code is actually ruff, it's the other one that's not
-    if string.match(diagnostic.message, '[F841]') then
-        return false
-    end
-
 	return true
 end
 
-function custom_on_publish_diagnostics(a, params, client_id, c, config)
-	filter(params.diagnostics, filter_diagnostics)
-	vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
-end
+lspconfig.pyright.setup({
+    on_attach = function(client, buffer)
+        client.handlers["textDocument/publishDiagnostics"] = function (a, params, client_id, c, config)
+        	filter(params.diagnostics, filter_diagnostics)
+        	vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
+        end
+        on_attach(client, buffer)
+    end,
+})
 
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---	custom_on_publish_diagnostics, {})
 
+-- ----------------------------------------------------------------------------
+-- Disable all hints from pyright
+-- ----------------------------------------------------------------------------
 -- Suppress all hints from pyright by changing the capabilities we advertise
 -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1439132189
 -- Note this can be implemented differently after moving to lazy: 
 -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1700845901
-lsp.configure('pyright', {
-    capabilities = {
-        textDocument = {
-            publishDiagnostics = {
-                tagSupport = {
-                    valueSet = { 2 }
-                }
-            }
-        }
-    }
-})
+--lsp.configure('pyright', {
+--    capabilities = {
+--        textDocument = {
+--            publishDiagnostics = {
+--                tagSupport = {
+--                    valueSet = { 2 }
+--                }
+--            }
+--        }
+--    }
+--})
 
+
+})
 
 lsp.setup()
