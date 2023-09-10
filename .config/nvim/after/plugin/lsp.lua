@@ -99,7 +99,24 @@ function custom_on_publish_diagnostics(a, params, client_id, c, config)
 	vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	custom_on_publish_diagnostics, {})
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--	custom_on_publish_diagnostics, {})
+
+-- Suppress all hints from pyright by changing the capabilities we advertise
+-- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1439132189
+-- Note this can be implemented differently after moving to lazy: 
+-- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1700845901
+lsp.configure('pyright', {
+    capabilities = {
+        textDocument = {
+            publishDiagnostics = {
+                tagSupport = {
+                    valueSet = { 2 }
+                }
+            }
+        }
+    }
+})
+
 
 lsp.setup()
