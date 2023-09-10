@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero')
+local lspconfig = require('lspconfig')
 
 lsp.preset({
     name = "recommended"
@@ -31,6 +32,18 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 -- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+lspconfig.pylsp.setup({
+    settings = {
+        pylsp = {
+            plugins = {
+                pyflakes = {
+                    enabled = false
+                }
+            }
+        }
+    }
+})
 
 lsp.setup()
