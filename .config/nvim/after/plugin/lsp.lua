@@ -1,4 +1,13 @@
 local lsp = require('lsp-zero')
+local mason = require('mason')
+
+-- Configure mason
+mason.setup({
+    ui = {
+        border = "single",
+    }
+})
+
 
 lsp.preset({
     name = "recommended"
