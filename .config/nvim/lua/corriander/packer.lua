@@ -34,13 +34,7 @@ return require('packer').startup(function(use)
 
   use('ellisonleao/gruvbox.nvim')
   use('rebelot/kanagawa.nvim')
-  use ({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
+  use ({ 'rose-pine/neovim', as = 'rose-pine' })
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
