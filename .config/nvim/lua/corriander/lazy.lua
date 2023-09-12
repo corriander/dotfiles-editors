@@ -4,9 +4,14 @@ return {
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'tpope/vim-surround',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  'mbbill/undotree',
+
+
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -76,13 +81,19 @@ return {
     },
   },
 
+  -- --------------------------------------------------------------------------
+  -- Theme
+  -- --------------------------------------------------------------------------
+  'rebelot/kanagawa.nvim',
+  'ellisonleao/gruvbox.nvim',
+  'navarasu/onedark.nvim',
+  { 'rose-pine/neovim', name = 'rose-pine' },
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'ellisonleao/gruvbox.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+      vim.cmd.colorscheme 'gruvbox'
+    end
   },
 
   {
@@ -92,7 +103,7 @@ return {
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'gruvbox_dark',
         component_separators = '|',
         section_separators = '',
       },
@@ -112,6 +123,19 @@ return {
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
+
+  -- --------------------------------------------------------------------------
+  -- Navigation / orientation
+  -- --------------------------------------------------------------------------
+  'theprimeagen/harpoon',
+
+  {
+      'numToStr/Navigator.nvim',
+      config = function()
+          require('Navigator').setup()
+      end
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -142,6 +166,10 @@ return {
     },
     build = ':TSUpdate',
   },
+
+  'nvim-treesitter/playground',
+
+  'romainl/vim-qf',
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.

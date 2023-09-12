@@ -156,12 +156,18 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+-- TODO: suppress annoying linter warning about missing 'modules' in type TSConfig
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
+  --
+  ensure_installed = { "bash", "bibtex", "c_sharp", "comment", "diff", "dockerfile",  "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore", "html", "htmldjango",  "http", "ini", "java", "javascript", "jq", "json", "jsonc", "latex", "make", "markdown_inline" , "matlab", "passwd", "perl", "python", "regex", "robot", "rst", "ruby", "rust", "scss", "terraform", "tsx", "todotxt", "toml", "turtle", "typescript", "yaml", "c", "lua", "vim", "vimdoc", "query" },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
+
+  sync_install = false,
+
+  ignore_install = { 'rust' },
 
   highlight = { enable = true },
   indent = { enable = true },

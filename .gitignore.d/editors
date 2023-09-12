@@ -17,4 +17,3 @@
 
 # Include neovim config dir
 !.config/nvim/
-.config/nvim/plugin/packer_compiled.lua
