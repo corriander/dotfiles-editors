@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- Project commands
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
