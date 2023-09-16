@@ -261,16 +261,5 @@ cmp.setup {
   },
 }
 
--- [[ Configure tabnine ]]
-require('tabnine').setup({
-  disable_auto_comment=true,
-  accept_keymap="<Tab>",
-  dismiss_keymap = "<C-]>",
-  debounce_ms = 800,
-  suggestion_color = {gui = "#808080", cterm = 244},
-  exclude_filetypes = {"TelescopePrompt"},
-  log_file_path = "~/.cache/nvim/tabnine.log", -- absolute path to Tabnine log file
-})
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
