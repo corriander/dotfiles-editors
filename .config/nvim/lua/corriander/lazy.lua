@@ -189,4 +189,6 @@ return {
   -- Trial
   -- --------------------------------------------------------------------------
   { 'codota/tabnine-nvim', build = "./dl_binaries.sh" },
+
+  'psf/black',
 }
