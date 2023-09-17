@@ -65,7 +65,7 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 -- TODO: Finish migrating to the plugins/**.lua structure
-require('lazy').setup("plugins")
+require('lazy').setup("plugins", { ui = { border = "double" } })
 
 vim.cmd([[colorscheme gruvbox]])
 
