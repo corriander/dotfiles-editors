@@ -67,6 +67,7 @@ vim.opt.rtp:prepend(lazypath)
 local lazyconf = require("corriander.lazy")
 require('lazy').setup(lazyconf, {})
 
+vim.cmd([[colorscheme gruvbox]])
 
 -- [[ Setting options ]]
 
