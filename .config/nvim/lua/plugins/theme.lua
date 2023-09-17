@@ -14,6 +14,9 @@ return {
         opts = {
             transparent_mode = true,
         },
+        -- XXX: Problems passing opts, and setting the scheme in config simultaneously.
+        --      This may provide a strategy for that elsewhere.
+        --          https://github.com/LunarVim/breadcrumbs.nvim/blob/1033b35/README.md
     },
 
     {
@@ -27,7 +30,18 @@ return {
                 component_separators = '|',
                 section_separators = '',
             },
-
+            sections = {
+                lualine_c = {
+                    {
+                        'filename',
+                        newfile_status = true,
+                        path = 4,
+                        -- TODO: fmt can maybe add more sophisticated starship-style path handling
+                        --       https://github.com/nvim-lualine/lualine.nvim/issues/969#issuecomment-1435911393
+                        -- TODO: consider using symbols (padlock, etc.)
+                    }
+                }
+            },
         },
     },
 
@@ -42,6 +56,7 @@ return {
         },
     },
 
+    -- TODO: This is not theme, move it out to appropriate module when ready
     -- "gc" to comment visual regions/lines
     { 'numToStr/Comment.nvim', opts = {} },
 
