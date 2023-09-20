@@ -2,8 +2,9 @@
 -- Navigation / orientation configuration
 -- ----------------------------------------------------------------------------
 
+return {
   -- Fuzzy Finder (files, lsp, etc)
-  return {
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
@@ -57,4 +58,6 @@
         vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
         vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
     end
-  }
+  },
+
+}
