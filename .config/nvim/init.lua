@@ -43,6 +43,10 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- [[ Setting options ]]
+
+require("corriander.set")
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -68,10 +72,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup("plugins", { ui = { border = "double" } })
 
 vim.cmd([[colorscheme gruvbox]])
-
--- [[ Setting options ]]
-
-require("corriander.set")
 
 -- [[ Basic Keymaps ]]
 
