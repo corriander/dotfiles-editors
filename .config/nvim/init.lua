@@ -71,7 +71,7 @@ vim.opt.rtp:prepend(lazypath)
 -- TODO: Finish migrating to the plugins/**.lua structure
 require('lazy').setup("plugins", { ui = { border = "double" } })
 
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme kanagawa]])
 
 -- [[ Basic Keymaps ]]
 

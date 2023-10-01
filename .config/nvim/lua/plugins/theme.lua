@@ -4,10 +4,35 @@
 -- Structural and visual configuration of the UI.
 -- ----------------------------------------------------------------------------
 return {
-    'rebelot/kanagawa.nvim',
-    'ellisonleao/gruvbox.nvim',
+    {
+        'rebelot/kanagawa.nvim',
+        priority = 1000,
+        opts = {
+            transparent = true,
+            --dimInactive = true,
+
+            colors = {
+                theme = {
+                    all = {
+                        ui = {
+                            bg_gutter = "none",
+                        },
+                    },
+                },
+            },
+
+            background = {
+                --dark = "dragon",
+                dark = "wave",
+                light = "lotus",
+            },
+        }
+    },
+
     'navarasu/onedark.nvim',
+
     { 'rose-pine/neovim', name = 'rose-pine' },
+
     {
         'ellisonleao/gruvbox.nvim',
         priority = 1000,
@@ -25,8 +50,7 @@ return {
         -- See `:help lualine.txt`
         opts = {
             options = {
-                icons_enabled = false,
-                theme = 'gruvbox_dark',
+                icons_enabled = true,
                 component_separators = '|',
                 section_separators = '',
             },
