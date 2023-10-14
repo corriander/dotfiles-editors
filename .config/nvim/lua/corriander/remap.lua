@@ -1,7 +1,8 @@
 -- Project commands
 --vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>pv", "<cmd>Oil<cr>", { desc = "Open parent directory" })
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+--vim.keymap.set("n", "<leader>pv", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+--vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", { noremap = true, desc = "Open current directory" })
 vim.keymap.set("n", "<leader>-", "<cmd>Neotree toggle current reveal_force_cwd left<cr>")
 vim.keymap.set("n", "<leader>_", "<cmd>Neotree float focus buffers toggle<cr>")
 vim.keymap.set("n", "<leader>gS", "<cmd>Neotree float git_status toggle<cr>")

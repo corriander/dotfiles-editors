@@ -31,20 +31,32 @@ return {
         }
     },
 
+    --{
+    --    'stevearc/oil.nvim',
+    --    opts = {
+    --        keymaps = {
+    --            -- rebind c-l and c-h (and may as well rebind c-s)
+    --            ["<C-s>"] = false,
+    --            ["<C-h>"] = false,
+    --            ["<C-l>"] = false,
+    --            ["<leader>vs"] = "actions.select_vsplit",
+    --            ["<leader>hs"] = "actions.select_split",
+    --            ["<C-0>"] = "actions.refresh",
+    --        },
+    --    },
+    --    -- Optional dependencies
+    --    dependencies = { "nvim-tree/nvim-web-devicons" },
+    --},
+
     {
-        'stevearc/oil.nvim',
-        opts = {
-            keymaps = {
-                -- rebind c-l and c-h (and may as well rebind c-s)
-                ["<C-s>"] = false,
-                ["<C-h>"] = false,
-                ["<C-l>"] = false,
-                ["<leader>vs"] = "actions.select_vsplit",
-                ["<leader>hs"] = "actions.select_split",
-                ["<C-0>"] = "actions.refresh",
-            },
-        },
-        -- Optional dependencies
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-    }
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    },
+
+    {
+        "airblade/vim-rooter",
+        config = function()
+            vim.api.nvim_set_var("rooter_manual_only", 1)
+        end
+    },
 }
