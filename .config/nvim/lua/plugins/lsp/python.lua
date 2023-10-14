@@ -18,7 +18,7 @@ M.pylsp_opts = {
                 -- ruff_config() is a WIP
                 -- ruff = require("plugins.lsp.python").ruff_config()
                 -- TODO: Configure pylsp-mypy for type checking
-                -- TODO: Configure python-lsp-black for formatting
+                pylsp_black = { enabled = true },
                 -- TODO: COnsider pyls-memestra for catching deprecations
                 -- TODO: Configure Jedi for completion and Rope for refactoring
 
@@ -111,6 +111,7 @@ M.install_extras = function(pkg, _)
             "--disable-pip-version-check",
             "pylsp-mypy",
             "python-lsp-ruff",
+            "python-lsp-black",
         },
         cwd = venv,
         env = { VIRTUAL_ENV = venv },
