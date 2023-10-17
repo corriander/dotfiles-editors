@@ -38,3 +38,7 @@ vim.wo.signcolumn = 'yes'
 vim.opt.colorcolumn = "80"
 vim.opt.termguicolors = true
 
+-- Treesitter folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false  -- don't load buffer folded
