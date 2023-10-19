@@ -80,9 +80,4 @@ return {
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
-
-  -- --------------------------------------------------------------------------
-  -- Trial
-  -- --------------------------------------------------------------------------
-
 }
