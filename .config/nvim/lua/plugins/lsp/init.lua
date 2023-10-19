@@ -136,7 +136,15 @@ return {
     },
 
     {
+        'github/copilot.vim',
+        config = function()
+            vim.g.copilot_assume_mapped = true
+        end,
+    },
+
+    {
         'codota/tabnine-nvim',
+        enabled = false,
         build = "./dl_binaries.sh",
         opts = {
               disable_auto_comment=true,
