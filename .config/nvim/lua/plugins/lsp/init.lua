@@ -137,8 +137,21 @@ return {
 
     {
         'github/copilot.vim',
+        enabled = false,
         config = function()
             vim.g.copilot_assume_mapped = true
+        end,
+    },
+
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        opts = {
+             copilot_node_command = os.getenv('MY_NODE_DEFAULT'),
+        },
+        config = function(_, opts)
+            require("copilot").setup(opts)
         end,
     },
 
