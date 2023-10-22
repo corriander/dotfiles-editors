@@ -41,6 +41,8 @@ return {
               file_browser = {
                   --theme = "ivy",
                   -- disables netrw and use telescope-file-browser in its place
+                  hidden = true,
+                  respect_gitignore = true,
                   hijack_netrw = true,
                   follow_symlinks = true,
                   mappings = {
