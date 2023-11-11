@@ -28,6 +28,13 @@ return {
 
         -- See `:help telescope` and `:help telescope.setup()`
         require('telescope').setup {
+          pickers = {
+              live_grep = {
+              additional_args = function(opts)
+                      return {"--hidden"}
+                  end
+              },
+          },
           defaults = {
             file_ignore_patterns = { ".git/" },
             mappings = {
