@@ -59,4 +59,6 @@ return {
             vim.api.nvim_set_var("rooter_manual_only", 1)
         end
     },
+
+    'mechatroner/rainbow_csv'
 }
