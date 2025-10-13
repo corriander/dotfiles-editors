@@ -127,9 +127,9 @@ return {
             ---@diagnostic disable-next-line: missing-fields
             cmp.setup({
                 snippet = {
-                  expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                  end,
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end,
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-p>"] = cmp.mapping.select_prev_item(), -- previous suggestion
@@ -144,8 +144,8 @@ return {
                     }),
                 }),
                 sources = {
-                  { name = 'nvim_lsp' },
-                  { name = 'luasnip' },
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
                 },
             })
 
@@ -192,13 +192,13 @@ return {
         enabled = false,
         build = "./dl_binaries.sh",
         opts = {
-              disable_auto_comment=true,
-              accept_keymap="<Tab>",
-              dismiss_keymap = "<C-]>",
-              debounce_ms = 800,
-              suggestion_color = {gui = "#808080", cterm = 244},
-              exclude_filetypes = {"TelescopePrompt", "neo-tree", "oil"},
-              log_file_path = vim.fn.stdpath('cache') .. "/tabnine.log", -- absolute path to Tabnine log file
+            disable_auto_comment=true,
+            accept_keymap="<Tab>",
+            dismiss_keymap = "<C-]>",
+            debounce_ms = 800,
+            suggestion_color = {gui = "#808080", cterm = 244},
+            exclude_filetypes = {"TelescopePrompt", "neo-tree", "oil"},
+            log_file_path = vim.fn.stdpath('cache') .. "/tabnine.log", -- absolute path to Tabnine log file
         },
         config = function(_, opts)
             require('tabnine').setup(opts)
