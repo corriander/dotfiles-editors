@@ -16,20 +16,6 @@ return {
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
         },
         config = function()
-            local common = require('plugins.lsp.common')
-
-            require('mason-lspconfig').setup_handlers({
-                function(server_name)
-                    local server_conf = common.servers[server_name] or {}
-                    require('lspconfig')[server_name].setup {
-                        capabilities = common.capabilities,
-                        on_attach = server_conf.on_attach or common.on_attach,
-                        cmd = server_conf.cmd,
-                        settings = server_conf.settings,
-                        filetypes = server_conf.filetypes,
-                    }
-                end
-            })
 
 
             -- ----------------------------------------------------------------------------
@@ -55,6 +41,24 @@ return {
                 update_in_insert = false,
                 severity_sort = true,
             })
+
+            local common = require('plugins.lsp.common')
+
+            -- Replaces legacy setup_handlers() API ( f(server_name) -> lspconfig[server_name].setup() )
+            -- with new API
+            local servers = vim.tbl_keys(common.servers)
+            for _, server_name in ipairs(servers) do
+                local server_conf = common.servers[server_name] or {}
+                -- lspconfig framework is deprecated and replaced by vim.lsp.config
+                vim.lsp.config(server_name, {
+                    --require('lspconfig')[server_name].setup {
+                    capabilities = common.capabilities,
+                    on_attach = server_conf.on_attach or common.on_attach,
+                    cmd = server_conf.cmd,
+                    settings = server_conf.settings,
+                    filetypes = server_conf.filetypes,
+                })
+            end
 
         end
     },
