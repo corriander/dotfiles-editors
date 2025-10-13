@@ -43,6 +43,31 @@ return {
                 end
             })
 
+
+            -- ----------------------------------------------------------------------------
+            -- Configure diagnostic signs
+            -- ----------------------------------------------------------------------------
+            -- This is the new way to configure diagnostics in Neovim 0.10+
+            -- Replaces the legacy sign_define() API but means it has to move out of config
+            -- into here so it can be run after the LSP is loaded.
+            vim.diagnostic.config({
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = " ",
+                        [vim.diagnostic.severity.WARN] = " ",
+                        [vim.diagnostic.severity.HINT] = " ",
+                        [vim.diagnostic.severity.INFO] = " ",
+                    },
+                },
+                underline = true,
+                virtual_text = {
+                    spacing = 4,
+                    prefix = '', -- Could be '●', '▎', 'x'
+                },
+                update_in_insert = false,
+                severity_sort = true,
+             })
+
         end
     },
 
