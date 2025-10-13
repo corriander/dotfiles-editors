@@ -14,21 +14,9 @@ return {
             -- Useful status updates for LSP
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-
-            -- Additional lua configuration, makes nvim stuff amazing!
-            'folke/neodev.nvim',
         },
         config = function()
             local common = require('plugins.lsp.common')
-
-            -- Ensure neodev gets loaded before lsp setup
-            -- https://github.com/folke/neodev.nvim/issues/98#issuecomment-1363407235
-            require("neodev").setup({
-                override = function(rootd, lib)
-                    lib.enabled = true
-                    lib.plugins = true
-                end
-            })
 
             require('mason-lspconfig').setup_handlers({
                 function(server_name)
@@ -66,7 +54,7 @@ return {
                 },
                 update_in_insert = false,
                 severity_sort = true,
-             })
+            })
 
         end
     },
@@ -214,5 +202,18 @@ return {
     },
 
     'psf/black',
+
+    {
+        -- replaces neodev
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    },
 
 }
