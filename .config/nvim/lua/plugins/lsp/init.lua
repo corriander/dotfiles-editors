@@ -16,8 +16,6 @@ return {
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
         },
         config = function()
-
-
             -- ----------------------------------------------------------------------------
             -- Configure diagnostic signs
             -- ----------------------------------------------------------------------------
@@ -59,7 +57,6 @@ return {
                     filetypes = server_conf.filetypes,
                 })
             end
-
         end
     },
 
@@ -137,7 +134,7 @@ return {
                     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-                    ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+                    ["<C-e>"] = cmp.mapping.abort(),        -- close completion window
                     ["<CR>"] = cmp.mapping.confirm({
                         behavior = cmp.ConfirmBehavior.Replace,
                         select = true,
@@ -148,7 +145,6 @@ return {
                     { name = 'luasnip' },
                 },
             })
-
         end,
     },
 
@@ -192,12 +188,12 @@ return {
         enabled = false,
         build = "./dl_binaries.sh",
         opts = {
-            disable_auto_comment=true,
-            accept_keymap="<Tab>",
+            disable_auto_comment = true,
+            accept_keymap = "<Tab>",
             dismiss_keymap = "<C-]>",
             debounce_ms = 800,
-            suggestion_color = {gui = "#808080", cterm = 244},
-            exclude_filetypes = {"TelescopePrompt", "neo-tree", "oil"},
+            suggestion_color = { gui = "#808080", cterm = 244 },
+            exclude_filetypes = { "TelescopePrompt", "neo-tree", "oil" },
             log_file_path = vim.fn.stdpath('cache') .. "/tabnine.log", -- absolute path to Tabnine log file
         },
         config = function(_, opts)
