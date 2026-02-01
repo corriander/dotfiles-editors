@@ -213,21 +213,55 @@ return {
         opts = {
             interactions = {
                 chat = {
-                    adapter = "gemini_cli",
+                    adapter = "gemini_cli", -- ACP preset
                     variables = {
-                        ["buffer"] = {
-                            opts = { default_params = "diff" }
-                        }
+                        buffer = { opts = { default_params = "diff" } },
                     },
                 },
+                inline = {
+                    adapter = "kobold_wsl",
+                },
             },
+
             display = {
                 chat = {
-                    window = {
-                        position = "right",
-                        width = 0.3,
-                    }
-                }
+                    window = { position = "right", width = 0.3 },
+                },
+            },
+
+            adapters = {
+                -- Hide ACP presets; keep only the listed adapters visible
+                acp = {
+                    opts = { show_presets = false },
+                    gemini_cli = "gemini_cli",  -- If we don't re-defined this it will not be available
+                },
+
+                -- Hide HTTP presets; keep only your own adapters visible
+                http = {
+                    opts = { show_presets = false },
+
+                    kobold_wsl = function()
+                        local url = vim.env.KOBOLD_BASE_URL
+                        if not url or url == "" then
+                            error("KOBOLD_BASE_URL is not set (expected e.g. http://localhost:5001)")
+                        end
+
+                        return require("codecompanion.adapters").extend("openai_compatible", {
+                            env = {
+                                url = url,
+                                api_key = "TERM", -- dummy
+                                chat_url = "/v1/chat/completions",
+                            },
+                            schema = {
+                                model = {
+                                    default = "koboldcpp/mistralai_Devstral-Small-2-24B-Instruct-2512-Q5_K_M",
+                                },
+                                max_tokens = { default = 2048 },
+                                temperature = { default = 0.3 },
+                            },
+                        })
+                    end,
+                },
             },
         },
     },
