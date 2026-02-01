@@ -201,6 +201,34 @@ return {
         end,
     },
 
+    {
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        opts = {
+            interactions = {
+                chat = {
+                    adapter = "gemini_cli",
+                    variables = {
+                        ["buffer"] = {
+                            opts = { default_params = "diff" }
+                        }
+                    },
+                },
+            },
+            display = {
+                chat = {
+                    window = {
+                        position = "right",
+                        width = 0.3,
+                    }
+                }
+            },
+        },
+    },
+
     'psf/black',
 
     {
