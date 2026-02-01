@@ -168,6 +168,9 @@ return {
             copilot_node_command = os.getenv('MY_NODE_DEFAULT'),
             filetypes = {
                 yaml = true,
+                json = false,
+                markdown = false,
+                txt = false,
             }
         },
         config = function(_, opts)
