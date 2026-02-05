@@ -79,15 +79,9 @@ M.servers = {
 
     pylsp = require('plugins.lsp.python').pylsp_opts,
 
-    lua_ls = {
-        settings = {
-            Lua = {
-                workspace = { checkThirdParty = false },
-                telemetry = { enable = false },
-            },
-        },
-    },
+    lua_ls = require('plugins.lsp.lua')
 }
+
 --
 ---- ----------------------------------------------------------------------------
 ---- Configure Capabilities
