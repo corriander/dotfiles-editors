@@ -16,6 +16,8 @@ return {
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
         },
         config = function()
+            --vim.lsp.set_log_level("DEBUG")  # XXX: Uncomment to debug LSP issues
+
             -- ----------------------------------------------------------------------------
             -- Configure diagnostic signs
             -- ----------------------------------------------------------------------------
