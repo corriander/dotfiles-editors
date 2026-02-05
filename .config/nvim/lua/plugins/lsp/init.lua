@@ -42,20 +42,60 @@ return {
 
             local common = require('plugins.lsp.common')
 
+            local function compose_on_attach(f_orig, f_common, f_server)
+                -- provides a callable to compose on_attach functions
+                -- most of the config table will be merged, but functions are not
+                -- This allows us to avoid clobbering or force chaining inside
+                return function(client, bufnr)
+                    if f_orig then f_orig(client, bufnr) end
+                    f_common(client, bufnr)
+                    if f_server then f_server(client, bufnr) end
+                end
+            end
+
+
             -- Replaces legacy setup_handlers() API ( f(server_name) -> lspconfig[server_name].setup() )
             -- with new API
             local servers = vim.tbl_keys(common.servers)
             for _, server_name in ipairs(servers) do
-                local server_conf = common.servers[server_name] or {}
-                -- lspconfig framework is deprecated and replaced by vim.lsp.config
-                vim.lsp.config(server_name, {
-                    --require('lspconfig')[server_name].setup {
-                    capabilities = common.capabilities,
-                    on_attach = server_conf.on_attach or common.on_attach,
-                    cmd = server_conf.cmd,
-                    settings = server_conf.settings,
-                    filetypes = server_conf.filetypes,
-                })
+                local server_conf = vim.deepcopy(common.servers[server_name] or {})
+
+                local composed_on_attach = compose_on_attach(
+                    (vim.lsp.config[server_name] or {}).on_attach,
+                    common.on_attach,
+                    server_conf.on_attach
+                )
+
+                ---- resolve on_attach by composing them; most settings are merged functions aren't
+                --local orig_on_attach = (vim.lsp.config[server_name] or {}).on_attach
+                --local common_on_attach = common.on_attach
+                --local server_on_attach = server_conf.on_attach
+                --local composed_on_attach = function(client, bufnr)
+                --    if orig_on_attach then orig_on_attach(client, bufnr) end
+                --    common_on_attach(client, bufnr)
+                --    if server_on_attach then server_on_attach(client, bufnr) end
+                --end
+                --
+
+                server_conf.on_attach = composed_on_attach
+
+                local base = { capabilities = common.capabilities }
+
+                local merged_conf = vim.tbl_deep_extend(
+                    'force',
+                    base,
+                    server_conf
+                )
+
+                vim.lsp.config(server_name, merged_conf)
+
+                --vim.lsp.config(server_name, {
+                --    capabilities = common.capabilities,
+                --    on_attach = composed_on_attach,
+                --    cmd = server_conf.cmd,
+                --    settings = server_conf.settings,
+                --    filetypes = server_conf.filetypes,
+                --})
             end
         end
     },
