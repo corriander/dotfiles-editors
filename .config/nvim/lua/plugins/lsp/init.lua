@@ -253,6 +253,13 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         opts = {
+
+            display = {
+                chat = {
+                    window = { position = "right", width = 0.3 },
+                },
+            },
+
             interactions = {
                 chat = {
                     adapter = "gemini_cli", -- ACP preset
@@ -263,11 +270,16 @@ return {
                 inline = {
                     adapter = "kobold_wsl",
                 },
+                cmd = {
+                    adapter = "gemini_cli", -- ACP preset
+                },
             },
 
-            display = {
-                chat = {
-                    window = { position = "right", width = 0.3 },
+            memory = {
+                opts = {
+                    chat = {
+                        enabled = true,
+                    },
                 },
             },
 
@@ -275,7 +287,7 @@ return {
                 -- Hide ACP presets; keep only the listed adapters visible
                 acp = {
                     opts = { show_presets = false },
-                    gemini_cli = "gemini_cli",  -- If we don't re-defined this it will not be available
+                    gemini_cli = "gemini_cli",  -- If we don't re-define this it will not be available
                 },
 
                 -- Hide HTTP presets; keep only your own adapters visible
@@ -304,6 +316,11 @@ return {
                         })
                     end,
                 },
+            },
+
+            -- NOTE: Yes, this is in opts.opts
+            opts = {
+                log_level = "DEBUG", -- or "TRACE"
             },
         },
     },
