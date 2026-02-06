@@ -48,8 +48,11 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>nu", function()
 	vim.api.nvim_command('set invrelativenumber')
 end)
+--
+--- Delete buffer without losing window layout
+vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd #<cr>", { desc = "Delete buffer politely" })
 
 vim.keymap.set("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {
-  silent = true,
-  desc = "open init.lua",
+	silent = true,
+	desc = "open init.lua",
 })
