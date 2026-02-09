@@ -52,6 +52,9 @@ end)
 --- Delete buffer without losing window layout
 vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd #<cr>", { desc = "Delete buffer politely" })
 
+
+vim.keymap.set("n", "<leader>aic", "<cmd>CodeCompanionChat<cr>", { desc = "CodeCompanion: Chat" })
+
 vim.keymap.set("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {
 	silent = true,
 	desc = "open init.lua",
