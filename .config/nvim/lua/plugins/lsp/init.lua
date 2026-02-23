@@ -302,9 +302,13 @@ return {
 
                                 g3_pro   = { "gemini", "--experimental-acp", "--model=gemini-3-pro-preview" },
                                 g3_flash = { "gemini", "--experimental-acp", "--model=gemini-3-flash-preview" },
+                                g3_flash_yolo   = { "gemini", "--experimental-acp", "--model=gemini-3-flash-preview", "--yolo" },
+                                g3_pro_yolo     = { "gemini", "--experimental-acp", "--model=gemini-3-pro-preview", "--yolo" },
 
                                 g2_pro   = { "gemini", "--experimental-acp", "--model=gemini-2.5-pro" },
+                                g2_pro_yolo     = { "gemini", "--experimental-acp", "--model=gemini-2.5-pro", "--yolo" },
                                 g2_flash = { "gemini", "--experimental-acp", "--model=gemini-2.5-flash" },
+                                g2_flash_yolo   = { "gemini", "--experimental-acp", "--model=gemini-2.5-flash", "--yolo" },
                                 g2_lite  = { "gemini", "--experimental-acp", "--model=gemini-2.5-flash-lite" },
                             },
                         })
