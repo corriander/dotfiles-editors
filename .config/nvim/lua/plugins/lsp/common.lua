@@ -77,9 +77,10 @@ M.servers = {
     -- tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
-    pylsp = require('plugins.lsp.python').pylsp_opts,
+    ty = {},
+    ruff = {},
 
-    lua_ls = require('plugins.lsp.lua')
+    lua_ls = require('plugins.lsp.lua'),
 }
 
 --

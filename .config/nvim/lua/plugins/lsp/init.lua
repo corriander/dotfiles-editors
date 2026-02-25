@@ -24,23 +24,37 @@ return {
             -- This is the new way to configure diagnostics in Neovim 0.10+
             -- Replaces the legacy sign_define() API but means it has to move out of config
             -- into here so it can be run after the LSP is loaded.
+
+            local icons = {
+              [vim.diagnostic.severity.ERROR] = " ", -- codicon: error
+              [vim.diagnostic.severity.WARN]  = " ", -- codicon: warning
+              [vim.diagnostic.severity.HINT]  = " ", -- codicon: lightbulb/hint
+              [vim.diagnostic.severity.INFO]  = " ", -- codicon: info
+            }
+
             vim.diagnostic.config({
-                signs = {
-                    text = {
-                        [vim.diagnostic.severity.ERROR] = " ",
-                        [vim.diagnostic.severity.WARN] = " ",
-                        [vim.diagnostic.severity.HINT] = " ",
-                        [vim.diagnostic.severity.INFO] = " ",
-                    },
-                },
-                underline = true,
-                virtual_text = {
-                    spacing = 4,
-                    prefix = '', -- Could be '●', '▎', 'x'
-                },
-                update_in_insert = false,
-                severity_sort = true,
+              severity_sort = true,
+              underline = true,
+              update_in_insert = false,
+              signs = { text = icons },
+              --virtual_text = false, -- keeps things "flat"; use hover/float instead
+              virtual_text = {
+                  spacing = 6,
+                  prefix = '', -- Could be '●', '▎', 'x'
+              },
+              float = { border = "rounded", source = "if_many" },
             })
+
+            -- Make gutter + line number reinforce the severity (helps on Kanagawa)
+            for severity, icon in pairs(icons) do
+              local name = ({
+                [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                [vim.diagnostic.severity.WARN]  = "DiagnosticSignWarn",
+                [vim.diagnostic.severity.HINT]  = "DiagnosticSignHint",
+                [vim.diagnostic.severity.INFO]  = "DiagnosticSignInfo",
+              })[severity]
+              vim.fn.sign_define(name, { text = icon, texthl = name, numhl = name })
+            end
 
             local common = require('plugins.lsp.common')
 
@@ -116,10 +130,6 @@ return {
                 },
             })
 
-            require("mason-registry"):on(
-                "package:install:success",
-                vim.schedule_wrap(require("plugins.lsp.python").install_extras)
-            )
         end,
     },
 
