@@ -5,6 +5,28 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
+        keys = {
+            {
+                "<leader>aic",
+                "<cmd>CodeCompanionChat<cr>",
+                desc = "AI Chat (Default)",
+            },
+            {
+                "<leader>aig",
+                "<cmd>CodeCompanionChat adapter=gemini_cli<cr>",
+                desc = "AI Chat (Gemini)",
+            },
+            {
+                "<leader>aik",
+                "<cmd>CodeCompanionChat adapter=koboldcpp<cr>",
+                desc = "AI Chat (KoboldCPP)",
+            },
+            {
+                "<leader>aip",
+                "<cmd>CodeCompanionChat adapter=proompter<cr>",
+                desc = "AI Prompt Builder",
+            },
+        },
         opts = {
 
             display = {
