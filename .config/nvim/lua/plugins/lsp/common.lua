@@ -78,7 +78,13 @@ M.servers = {
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
     ty = {},
-    ruff = {},
+    ruff = {
+        init_options = {
+            settings = {
+                lint = { enable = true },
+            },
+        },
+    },
 
     lua_ls = require('plugins.lsp.lua'),
 }
